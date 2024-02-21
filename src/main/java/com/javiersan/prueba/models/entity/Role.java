@@ -1,6 +1,7 @@
 package com.javiersan.prueba.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,9 @@ public class Role implements Serializable {
 
 	private String authority;
 
-    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id")
+	private List<Role> roles;
 
 	public Long getId() {
 		return id;

@@ -34,12 +34,11 @@ public class NavesRestController {
     @ApiOperation(value = "Lista todas las naves", notes = "retorna un listado paginado de todas las naves")
 	public String listar(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
 
-		Pageable pageRequest = PageRequest.of(page, 4); // le pasamos la página y el nº de elementos a mostrar por página
+		Pageable pageRequest = PageRequest.of(page, 4); 
    
-		//invocación al findall del servicio
+		
 		Page<Nave> naves = naveService.findAll(pageRequest);
 
-		//llamamos al pagerender para el paginador
 		PageRender<Nave> pageRender = new PageRender<Nave>("/listar", naves);  //url donde están los clientes
 		model.addAttribute("titulo", "Listado de naves");
 		model.addAttribute("naves", naves);
@@ -75,7 +74,7 @@ public class NavesRestController {
     }
 
     @GetMapping(value = "/nave/{term}", produces = { "application/json" }) 
-    @ApiOperation(value = "Busca las naves que coincidan con el término dado", notes = "retorna una lista de las naves que contienen ese término ")
+    @ApiOperation(value = "Busca las naves que coincidan con el término dado", notes = "retorna en elbody una lista de las naves que contienen ese término ")
 	public @ResponseBody List<Nave> cargarNaves(@PathVariable String term) {
 
 		return naveService.findByNombre(term);

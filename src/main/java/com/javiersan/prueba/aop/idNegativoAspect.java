@@ -21,6 +21,7 @@ public class idNegativoAspect {
         String method = jointPoint.getSignature().getName();
 
         String args = Arrays.toString(jointPoint.getArgs());
+        
         logger.info("Antes: " + method + " con los argumentos " + args);
 
     }

@@ -36,11 +36,15 @@ public class Nave implements Serializable {
     private String modelo;
 
 
-    @ApiModelProperty(value = "Fecha creación de la nave", required = true)
+    @ApiModelProperty(value = "Fecha de creación de la nave", required = true)
     @Column(name="create_at")
     @Temporal(TemporalType.DATE)
     private Date createAt;
 
+    public Nave(){
+
+        super();
+  }
 
 
     public Long getId() {

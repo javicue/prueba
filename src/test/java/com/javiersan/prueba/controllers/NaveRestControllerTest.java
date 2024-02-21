@@ -25,7 +25,7 @@ public class NaveRestControllerTest {
 		
 		Nave nave = new Nave();
 		
-		when(service.crear(any(nave).thenReturn(new ResponseEntity<?>(HttpStatus.OK))));
+		when(service.crear(any(Nave.class))).thenReturn(new ResponseEntity<?>(HttpStatus.OK));
 		
 		ResponseEntity<?> respuesta = naveController.crear(nave);
 		
